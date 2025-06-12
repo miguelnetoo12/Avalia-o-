@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.Locale; // Para garantir que o ponto decimal seja usado para entrada/saída
+
+public class ConversorTemperatura {
+
+    public static void main(String[] args) {
+        // Configura o Locale para US para garantir o uso do ponto como separador decimal
+        // Isso é útil se o sistema do usuário estiver configurado para usar vírgula.
+        Locale.setDefault(Locale.US);
+
+        Scanner scanner = new Scanner(System.in);
+
+        double celsius;
+        double fahrenheit;
+        double kelvin;
+
+        // 1. Receber a entrada do usuário
+        System.out.print("Digite a temperatura em graus Celsius (°C): ");
+        celsius = scanner.nextDouble();
+
+        // 2. Realizar as conversões
+        // Fahrenheit (°F) = (Celsius (°C) × 9/5) + 32
+        // É importante usar 9.0/5.0 para garantir a divisão de ponto flutuante
+        fahrenheit = (celsius * 9.0 / 5.0) + 32;
+
+        // Kelvin (K) = Celsius (°C) + 273.15
+        kelvin = celsius + 273.15;
+
+        // 3. Exibir os resultados
+        System.out.println("\n--- Resultados da Conversão ---");
+        // Usamos printf para formatar a saída com uma casa decimal para Celsius e Fahrenheit,
+        // e duas casas decimais para Kelvin, conforme o exemplo.
+        System.out.printf("Temperatura em Celsius: %.1f °C\n", celsius);
+        System.out.printf("Temperatura em Fahrenheit: %.1f °F\n", fahrenheit);
+        System.out.printf("Temperatura em Kelvin: %.2f K\n", kelvin);
+
+        scanner.close(); // Boa prática fechar o scanner quando não for mais necessário
+    }
+}
